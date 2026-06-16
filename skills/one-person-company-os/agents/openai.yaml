@@ -1,0 +1,4 @@
+interface:
+  display_name: "One Person Company OS"
+  short_description: "One-person software company agent system"
+  default_prompt: "Use $one-person-company-os to plan and run a new software project from idea to release."

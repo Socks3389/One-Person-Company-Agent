@@ -1,0 +1,77 @@
+# ============================================================
+# ONE PERSON COMPANY OS - Founder-CEO Role Dependencies
+# ============================================================
+# 这是 CEO 角色的强制依赖清单。缺少任何依赖，CEO无法激活
+
+role: Founder-CEO
+department: Executive Office
+owner: "founder-ceo"
+
+# ============================================================
+# 强制 Skill 依赖 - 缺少则无法激活
+# ============================================================
+required_skills:
+  - name: superpowers/brainstorming
+    version: ">=1.0.0"
+    reason: "CEO 需要发散思维来做业务决策、优先级排序、取舍权衡"
+    source: "offline-dependencies/repos/skills/superpowers"
+  - name: superpowers/writing-plans
+    version: ">=1.0.0"
+    reason: "CEO 需要制定清晰的里程碑计划、发布标准、资源分配"
+    source: "offline-dependencies/repos/skills/superpowers"
+
+# ============================================================
+# 强制 MCP 依赖 - 缺少则无法激活
+# ============================================================
+required_mcp:
+  - name: filesystem
+    permissions: ["read", "write"]
+    scope: ".opc/memory/shared"
+    reason: "CEO 需要读写项目级共享记忆"
+  - name: git
+    permissions: ["read"]
+    scope: "project-root"
+    reason: "CEO 需要了解项目历史和变更"
+  - name: observation_sequentialthinking
+    permissions: ["execute"]
+    scope: "global"
+    reason: "CEO 需要结构化思考复杂的业务决策流程"
+
+# ============================================================
+# 可选 Skill 依赖 - 缺少则降级使用
+# ============================================================
+optional_skills: []
+
+# ============================================================
+# 可选 MCP 依赖 - 缺少则降级使用
+# ============================================================
+optional_mcp:
+  - name: observability
+    permissions: ["read"]
+    scope: "production"
+    reason: "CEO 需要了解生产环境的业务指标"
+
+# ============================================================
+# 记忆规格 - 独立记忆分区
+# ============================================================
+memory_spec:
+  private_memory_path: ".opc/memory/founder-ceo/"
+  shared_memory_access:
+    read: ["prd", "architecture", "task-plan", "test-reports", "release-records"]
+    write: ["release-records", "milestones"]
+  memory_ttl: "365d"
+  memory_entities:
+    - "business-decisions: 业务决策记录"
+    - "tradeoffs: 取舍权衡记录"
+    - "user-needs: 用户需求洞察"
+    - "release-history: 发布历史"
+    - "risk-register: 风险登记册"
+
+# ============================================================
+# 激活前置检查清单
+# ============================================================
+activation_checklist:
+  - "所有强制 Skill 已安装且版本符合要求"
+  - "所有强制 MCP 已配置且权限符合要求"
+  - "私有记忆目录已初始化"
+  - "共享记忆访问权限已验证"

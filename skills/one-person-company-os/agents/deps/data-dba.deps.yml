@@ -1,0 +1,54 @@
+# ============================================================
+# ONE PERSON COMPANY OS - DBA Role Dependencies
+# ============================================================
+role: Data-DBA
+department: Data Department
+owner: "data-dba"
+
+required_skills:
+  - name: karpathy-guidelines
+    version: ">=1.0.0"
+    reason: "DBA 需要简单、可验证的迁移方案，避免风险"
+    source: "offline-dependencies/repos/skills/andrej-karpathy-skills"
+
+required_mcp:
+  - name: filesystem
+    permissions: ["read", "write"]
+    scope: "project-root"
+    reason: "DBA 需要读写迁移脚本、数据模型"
+  - name: database
+    permissions: ["read", "schema-read"]
+    scope: "development"
+    reason: "DBA 需要检查现有数据库 schema 和索引"
+
+optional_skills: []
+
+optional_mcp:
+  - name: database
+    permissions: ["write"]
+    scope: "staging"
+    reason: "在 staging 环境执行迁移（需要显式审批）"
+  - name: redis
+    permissions: ["read"]
+    scope: "development"
+    reason: "检查缓存策略"
+
+memory_spec:
+  private_memory_path: ".opc/memory/data-dba/"
+  shared_memory_access:
+    read: ["architecture", "migration-plans", "schema-docs"]
+    write: ["migration-plans", "schema-docs"]
+  memory_ttl: "365d"
+  memory_entities:
+    - "schema-history: Schema 变更历史"
+    - "migration-failures: 迁移失败记录和解决方案"
+    - "index-patterns: 索引设计模式库"
+    - "performance-notes: 数据库性能优化经验"
+    - "backup-notes: 备份恢复经验"
+
+activation_checklist:
+  - "所有强制 Skill 已安装且版本符合要求"
+  - "所有强制 MCP 已配置且权限符合要求"
+  - "私有记忆目录已初始化"
+  - "共享记忆访问权限已验证"
+  - "确认数据库 MCP 没有不必要的写权限"

@@ -1,0 +1,61 @@
+# ============================================================
+# ONE PERSON COMPANY OS - Frontend Engineer Role Dependencies
+# ============================================================
+role: Web-FE
+department: Engineering Department
+owner: "web-fe"
+
+required_skills:
+  - name: ui-ux-pro-max-skill
+    version: ">=1.0.0"
+    reason: "前端工程师需要遵循 UI/UX 设计规范、设计系统、无障碍标准"
+    source: "offline-dependencies/repos/skills/ui-ux-pro-max-skill"
+  - name: karpathy-guidelines
+    version: ">=1.0.0"
+    reason: "前端工程师需要保持简单、最小化增量、可验证的目标"
+    source: "offline-dependencies/repos/skills/andrej-karpathy-skills"
+  - name: superpowers/test-driven-development
+    version: ">=1.0.0"
+    reason: "前端工程师需要 TDD 来保证组件质量和回归测试"
+    source: "offline-dependencies/repos/skills/superpowers"
+
+required_mcp:
+  - name: filesystem
+    permissions: ["read", "write"]
+    scope: "project-root"
+    reason: "前端工程师需要读写源代码、组件、样式文件"
+  - name: git
+    permissions: ["read", "diff"]
+    scope: "project-root"
+    reason: "前端工程师需要了解代码变更历史"
+  - name: browser
+    permissions: ["navigate", "screenshot", "click", "fill"]
+    scope: "local"
+    reason: "前端工程师需要在真实浏览器中验证 UI 行为"
+
+optional_skills:
+  - name: superpowers/systematic-debugging
+    version: ">=1.0.0"
+    reason: "调试复杂前端问题时需要"
+
+optional_mcp: []
+
+memory_spec:
+  private_memory_path: ".opc/memory/web-fe/"
+  shared_memory_access:
+    read: ["prd", "architecture", "task-plan", "design-system"]
+    write: ["implementation-notes"]
+  memory_ttl: "365d"
+  memory_entities:
+    - "component-library: 组件库偏好和使用经验"
+    - "ui-patterns: UI 模式库"
+    - "bug-patterns: 常见 Bug 模式库"
+    - "performance-notes: 前端性能优化经验"
+    - "accessibility-notes: 无障碍实现经验"
+
+activation_checklist:
+  - "所有强制 Skill 已安装且版本符合要求"
+  - "所有强制 MCP 已配置且权限符合要求"
+  - "私有记忆目录已初始化"
+  - "共享记忆访问权限已验证"
+  - "Browser MCP 可以正常访问本地开发服务器"

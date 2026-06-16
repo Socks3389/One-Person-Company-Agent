@@ -1,0 +1,66 @@
+# ============================================================
+# ONE PERSON COMPANY OS - Security Engineer Role Dependencies
+# ============================================================
+role: Security-Sec
+department: Security Department
+owner: "security-sec"
+
+required_skills:
+  - name: karpathy-guidelines
+    version: ">=1.0.0"
+    reason: "安全审计需要简单、清晰、可验证的结论"
+    source: "offline-dependencies/repos/skills/andrej-karpathy-skills"
+
+required_mcp:
+  - name: filesystem
+    permissions: ["read"]
+    scope: "project-root"
+    reason: "安全工程师需要扫描源代码中的漏洞"
+  - name: git
+    permissions: ["read", "diff"]
+    scope: "project-root"
+    reason: "安全工程师需要审计代码变更中的安全风险"
+  - name: observation_sequentialthinking
+    permissions: ["execute"]
+    scope: "global"
+    reason: "安全工程师需要结构化地分析风险链"
+
+optional_skills: []
+
+optional_mcp:
+  - name: secrets
+    permissions: ["metadata"]
+    scope: "project"
+    reason: "检查密钥泄露风险"
+  - name: database
+    permissions: ["read"]
+    scope: "development"
+    reason: "检查数据模型中的 PII 暴露风险"
+  - name: redis
+    permissions: ["read"]
+    scope: "development"
+    reason: "检查缓存中的敏感数据暴露"
+  - name: ssh
+    permissions: ["execute"]
+    scope: "staging"
+    reason: "审计 staging 环境配置（需要显式审批）"
+
+memory_spec:
+  private_memory_path: ".opc/memory/security-sec/"
+  shared_memory_access:
+    read: ["architecture", "release-records", "security-reports"]
+    write: ["security-reports", "risk-assessments"]
+  memory_ttl: "365d"
+  memory_entities:
+    - "vulnerability-patterns: 漏洞模式库和修复方案"
+    - "audit-history: 安全审计历史"
+    - "security-decisions: 安全决策记录"
+    - "incident-playbook: 安全事件响应手册"
+    - "dependency-scan-history: 依赖扫描历史"
+
+activation_checklist:
+  - "所有强制 Skill 已安装且版本符合要求"
+  - "所有强制 MCP 已配置且权限符合要求"
+  - "私有记忆目录已初始化"
+  - "共享记忆访问权限已验证"
+  - "确认没有不必要的高权限 MCP 已启用"

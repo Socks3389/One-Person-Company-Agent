@@ -1,0 +1,57 @@
+# ============================================================
+# ONE PERSON COMPANY OS - Architect/Tech Lead Role Dependencies
+# ============================================================
+role: Architect-TL
+department: Engineering Department
+owner: "architect-tl"
+
+required_skills:
+  - name: superpowers/writing-plans
+    version: ">=1.0.0"
+    reason: "架构师需要编写结构化的架构文档、模块边界、API 契约"
+    source: "offline-dependencies/repos/skills/superpowers"
+  - name: karpathy-guidelines
+    version: ">=1.0.0"
+    reason: "架构师需要保持简单、最小化增量、可验证的目标"
+    source: "offline-dependencies/repos/skills/andrej-karpathy-skills"
+
+required_mcp:
+  - name: filesystem
+    permissions: ["read", "write"]
+    scope: ".opc/memory"
+    reason: "架构师需要读写架构文档、数据模型、API 设计"
+  - name: git
+    permissions: ["read", "history"]
+    scope: "project-root"
+    reason: "架构师需要了解项目历史和技术债务"
+  - name: observation_sequentialthinking
+    permissions: ["execute"]
+    scope: "global"
+    reason: "架构师需要结构化地权衡技术选型和风险"
+
+optional_skills: []
+
+optional_mcp:
+  - name: database
+    permissions: ["read"]
+    scope: "development"
+    reason: "架构师需要了解现有数据结构"
+
+memory_spec:
+  private_memory_path: ".opc/memory/architect-tl/"
+  shared_memory_access:
+    read: ["prd", "architecture", "task-plan", "test-reports", "release-records"]
+    write: ["architecture", "task-plan"]
+  memory_ttl: "365d"
+  memory_entities:
+    - "tech-stack-history: 技术选型历史"
+    - "rejected-architectures: 被否决的架构方案及原因"
+    - "risk-register: 技术风险登记册"
+    - "performance-notes: 性能优化经验"
+    - "tech-debt-log: 技术债务记录"
+
+activation_checklist:
+  - "所有强制 Skill 已安装且版本符合要求"
+  - "所有强制 MCP 已配置且权限符合要求"
+  - "私有记忆目录已初始化"
+  - "共享记忆访问权限已验证"

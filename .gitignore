@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Local config
+.claude/settings.local.json
+.claude/transcripts/
+
+# Test project artifacts
+.opc/
+openspec/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

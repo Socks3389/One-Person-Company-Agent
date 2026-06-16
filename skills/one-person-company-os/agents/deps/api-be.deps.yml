@@ -1,0 +1,60 @@
+# ============================================================
+# ONE PERSON COMPANY OS - Backend Engineer Role Dependencies
+# ============================================================
+role: API-BE
+department: Engineering Department
+owner: "api-be"
+
+required_skills:
+  - name: superpowers/test-driven-development
+    version: ">=1.0.0"
+    reason: "后端工程师需要 TDD 来保证 API 质量和业务逻辑正确性"
+    source: "offline-dependencies/repos/skills/superpowers"
+  - name: karpathy-guidelines
+    version: ">=1.0.0"
+    reason: "后端工程师需要保持简单、最小化增量、可验证的目标"
+    source: "offline-dependencies/repos/skills/andrej-karpathy-skills"
+
+required_mcp:
+  - name: filesystem
+    permissions: ["read", "write"]
+    scope: "project-root"
+    reason: "后端工程师需要读写源代码、API、业务逻辑"
+  - name: git
+    permissions: ["read", "diff"]
+    scope: "project-root"
+    reason: "后端工程师需要了解代码变更历史"
+
+optional_skills:
+  - name: superpowers/systematic-debugging
+    version: ">=1.0.0"
+    reason: "调试复杂后端问题时需要"
+
+optional_mcp:
+  - name: database
+    permissions: ["read"]
+    scope: "development"
+    reason: "验证数据逻辑时需要"
+  - name: redis
+    permissions: ["read"]
+    scope: "development"
+    reason: "验证缓存逻辑时需要"
+
+memory_spec:
+  private_memory_path: ".opc/memory/api-be/"
+  shared_memory_access:
+    read: ["prd", "architecture", "task-plan"]
+    write: ["implementation-notes", "api-docs"]
+  memory_ttl: "365d"
+  memory_entities:
+    - "api-patterns: API 设计模式库"
+    - "bug-patterns: 常见 Bug 模式库"
+    - "performance-notes: 后端性能优化经验"
+    - "auth-patterns: 认证授权实现经验"
+    - "migration-notes: 数据库迁移经验"
+
+activation_checklist:
+  - "所有强制 Skill 已安装且版本符合要求"
+  - "所有强制 MCP 已配置且权限符合要求"
+  - "私有记忆目录已初始化"
+  - "共享记忆访问权限已验证"

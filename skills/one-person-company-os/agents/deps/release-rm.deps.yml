@@ -1,0 +1,58 @@
+# ============================================================
+# ONE PERSON COMPANY OS - Release Manager Role Dependencies
+# ============================================================
+role: Release-RM
+department: Platform Department
+owner: "release-rm"
+
+required_skills:
+  - name: superpowers/finishing-a-development-branch
+    version: ">=1.0.0"
+    reason: "发布经理需要系统化地完成发布准备工作"
+    source: "offline-dependencies/repos/skills/superpowers"
+  - name: superpowers/verification-before-completion
+    version: ">=1.0.0"
+    reason: "发布经理需要在发布前验证所有检查项"
+    source: "offline-dependencies/repos/skills/superpowers"
+
+required_mcp:
+  - name: filesystem
+    permissions: ["read", "write"]
+    scope: ".opc/memory/release-records"
+    reason: "发布经理需要读写发布记录、版本信息"
+  - name: git
+    permissions: ["read", "log", "tag"]
+    scope: "project-root"
+    reason: "发布经理需要打标签、查看变更日志"
+
+optional_skills: []
+
+optional_mcp:
+  - name: ssh
+    permissions: ["execute"]
+    scope: "staging"
+    reason: "部署到 staging 环境（需要显式审批）"
+  - name: observability
+    permissions: ["read"]
+    scope: "staging"
+    reason: "监控发布后的指标"
+
+memory_spec:
+  private_memory_path: ".opc/memory/release-rm/"
+  shared_memory_access:
+    read: ["test-reports", "security-reports", "release-records"]
+    write: ["release-records"]
+  memory_ttl: "365d"
+  memory_entities:
+    - "release-history: 发布历史"
+    - "rollback-cases: 回滚案例和原因"
+    - "release-checklist: 发布检查清单"
+    - "deployment-patterns: 部署模式库"
+    - "incident-notes: 发布事故记录"
+
+activation_checklist:
+  - "所有强制 Skill 已安装且版本符合要求"
+  - "所有强制 MCP 已配置且权限符合要求"
+  - "私有记忆目录已初始化"
+  - "共享记忆访问权限已验证"
+  - "确认没有不必要的生产环境权限"

@@ -1,0 +1,60 @@
+snapshot_date: "2026-06-16"
+purpose: "Pinned offline dependencies for one-person-company-os roles, skills, and MCP tooling."
+policy:
+  install_mode: "shallow git mirrors"
+  update_rule: "manual refresh only"
+  security_rule: "review code, license, permissions, and environment scope before enabling execution"
+skills:
+  superpowers:
+    source: "https://github.com/obra/superpowers"
+    local_path: "offline-dependencies/repos/skills/superpowers"
+    commit: "8cf39006140a743dce31ba4046fceab90cc214e6"
+    usage: "Planning, TDD, debugging, code review, verification, branch workflow."
+    invoke_as: "$superpowers/<subskill>"
+    status: "mirrored"
+  ui-ux-pro-max-skill:
+    source: "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill"
+    local_path: "offline-dependencies/repos/skills/ui-ux-pro-max-skill"
+    commit: "b7e3af80f6e331f6fb456667b82b12cade7c9d35"
+    usage: "UI/UX design intelligence for frontend, cross-platform UI, design systems, accessibility."
+    invoke_as: "$ui-ux-pro-max-skill"
+    status: "mirrored"
+  andrej-karpathy-skills:
+    source: "https://github.com/multica-ai/andrej-karpathy-skills"
+    local_path: "offline-dependencies/repos/skills/andrej-karpathy-skills"
+    commit: "2c606141936f1eeef17fa3043a72095b4765b9c2"
+    usage: "Clarification, simplicity, minimal diffs, goal-driven coding discipline."
+    invoke_as: "$karpathy-guidelines"
+    status: "mirrored"
+mcp:
+  modelcontextprotocol-servers:
+    source: "https://github.com/modelcontextprotocol/servers"
+    local_path: "offline-dependencies/repos/mcp/modelcontextprotocol-servers"
+    commit: "275175cda17ca9c49920ceed2bcf27e12e59f8b2"
+    usage: "Official reference servers: filesystem, git, fetch, memory, sequential thinking, time."
+    status: "mirrored"
+  awesome-mcp-servers-punkpeye:
+    source: "https://github.com/punkpeye/awesome-mcp-servers"
+    local_path: "offline-dependencies/repos/mcp/awesome-mcp-servers-punkpeye"
+    commit: "daa005e19ee5ddcbd943e43d2ffe27c3b720f0bf"
+    usage: "High-star MCP server discovery directory."
+    status: "mirrored"
+  awesome-mcp-servers-appcypher:
+    source: "https://github.com/appcypher/awesome-mcp-servers"
+    local_path: "offline-dependencies/repos/mcp/awesome-mcp-servers-appcypher"
+    commit: "280218b4bba97a49facf929f8012dec5e30384b6"
+    usage: "Curated MCP server directory and security warning reference."
+    status: "mirrored"
+  mcp-redis:
+    source: "https://github.com/redis/mcp-redis"
+    local_path: "offline-dependencies/repos/mcp/mcp-redis"
+    commit: "49920d7d0daf509e0fbc35d4a5a0e36909f3420e"
+    usage: "Redis MCP server; require Redis ACL and environment-specific URL before enabling."
+    status: "mirrored"
+pending_review:
+  mysql-mcp:
+    reason: "Select and pin a MySQL MCP from the official registry or curated lists after security review."
+  postgres-mcp:
+    reason: "Official Postgres server is archived in reference materials; select maintained replacement or use read-only database tooling."
+  ssh-mcp:
+    reason: "SSH MCP must be selected per server/security model and must not be enabled for production writes by default."

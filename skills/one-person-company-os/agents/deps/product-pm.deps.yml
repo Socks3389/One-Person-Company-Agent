@@ -1,0 +1,57 @@
+# ============================================================
+# ONE PERSON COMPANY OS - Product Manager Role Dependencies
+# ============================================================
+role: Product-PM
+department: Product Department
+owner: "product-pm"
+
+required_skills:
+  - name: superpowers/writing-plans
+    version: ">=1.0.0"
+    reason: "PM 需要编写结构化的 PRD、用户故事、验收条件"
+    source: "offline-dependencies/repos/skills/superpowers"
+  - name: superpowers/brainstorming
+    version: ">=1.0.0"
+    reason: "PM 需要发散思维来挖掘用户需求、定义 MVP 范围"
+    source: "offline-dependencies/repos/skills/superpowers"
+  - name: ui-ux-pro-max-skill
+    version: ">=1.0.0"
+    reason: "PM 需要理解 UX 边界，避免提出技术上不可行的需求"
+    source: "offline-dependencies/repos/skills/ui-ux-pro-max-skill"
+
+required_mcp:
+  - name: filesystem
+    permissions: ["read", "write"]
+    scope: ".opc/memory"
+    reason: "PM 需要读写 PRD、用户故事、验收条件等交付物"
+  - name: observation_sequentialthinking
+    permissions: ["execute"]
+    scope: "global"
+    reason: "PM 需要结构化地把模糊需求转化为可执行的任务"
+
+optional_skills: []
+
+optional_mcp:
+  - name: browser
+    permissions: ["navigate", "screenshot"]
+    scope: "local"
+    reason: "PM 需要查看竞品，了解用户体验"
+
+memory_spec:
+  private_memory_path: ".opc/memory/product-pm/"
+  shared_memory_access:
+    read: ["prd", "architecture", "task-plan", "test-reports", "release-records"]
+    write: ["prd", "task-plan", "user-stories"]
+  memory_ttl: "365d"
+  memory_entities:
+    - "user-personas: 用户画像库"
+    - "rejected-ideas: 被否决的想法及原因"
+    - "scope-creep-log: 范围蔓延记录"
+    - "acceptance-patterns: 验收条件模式库"
+    - "user-research: 用户调研笔记"
+
+activation_checklist:
+  - "所有强制 Skill 已安装且版本符合要求"
+  - "所有强制 MCP 已配置且权限符合要求"
+  - "私有记忆目录已初始化"
+  - "共享记忆访问权限已验证"

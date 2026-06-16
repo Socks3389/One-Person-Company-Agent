@@ -1,0 +1,65 @@
+# ============================================================
+# ONE PERSON COMPANY OS - QA Engineer Role Dependencies
+# ============================================================
+role: Quality-QA
+department: Quality Department
+owner: "quality-qa"
+
+required_skills:
+  - name: superpowers/verification-before-completion
+    version: ">=1.0.0"
+    reason: "QA 需要系统性地验证交付物，而不是随意检查"
+    source: "offline-dependencies/repos/skills/superpowers"
+  - name: superpowers/test-driven-development
+    version: ">=1.0.0"
+    reason: "QA 需要理解测试策略，编写和验证测试用例"
+    source: "offline-dependencies/repos/skills/superpowers"
+  - name: ui-ux-pro-max-skill
+    version: ">=1.0.0"
+    reason: "QA 需要验证 UI 流程、状态、响应式、无障碍"
+    source: "offline-dependencies/repos/skills/ui-ux-pro-max-skill"
+
+required_mcp:
+  - name: filesystem
+    permissions: ["read", "write"]
+    scope: ".opc/memory/test-reports"
+    reason: "QA 需要读写测试报告、Bug 列表"
+  - name: browser
+    permissions: ["navigate", "screenshot", "click", "fill", "press_key"]
+    scope: "local"
+    reason: "QA 需要在真实浏览器中执行端到端测试"
+  - name: observation_sequentialthinking
+    permissions: ["execute"]
+    scope: "global"
+    reason: "QA 需要结构化地设计测试用例，覆盖边界条件"
+
+optional_skills:
+  - name: superpowers/systematic-debugging
+    version: ">=1.0.0"
+    reason: "调试复杂 Bug 时需要"
+
+optional_mcp:
+  - name: database
+    permissions: ["read"]
+    scope: "development"
+    reason: "验证数据一致性时需要"
+
+memory_spec:
+  private_memory_path: ".opc/memory/quality-qa/"
+  shared_memory_access:
+    read: ["prd", "architecture", "task-plan", "test-reports"]
+    write: ["test-reports", "bug-reports"]
+  memory_ttl: "365d"
+  memory_entities:
+    - "test-strategies: 测试策略库"
+    - "bug-patterns: Bug 模式库和复现步骤"
+    - "edge-cases: 边界用例库"
+    - "regression-checklist: 回归测试检查清单"
+    - "browser-compat: 浏览器兼容性测试经验"
+
+activation_checklist:
+  - "所有强制 Skill 已安装且版本符合要求"
+  - "所有强制 MCP 已配置且权限符合要求"
+  - "私有记忆目录已初始化"
+  - "共享记忆访问权限已验证"
+  - "Browser MCP 可以正常访问本地开发服务器"
