@@ -1,8 +1,9 @@
 ﻿{
   "name": "one-person-company-os",
   "displayName": "One Person Company OS",
+  "command": "opc",
   "description": "AI-powered software development workflow. 7-phase process: Idea -> Product -> Architecture -> Implementation -> QA -> Security -> Release. Built-in role isolation, memory system, quality gates, and OpenSpec integration.",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": "One Person Company",
   "license": "MIT",
   "homepage": "https://github.com/Socks3389/One-Person-Company-Agent",
