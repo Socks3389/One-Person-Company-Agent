@@ -5,6 +5,8 @@
   "version": "2.0.0",
   "author": "One Person Company",
   "license": "MIT",
+  "homepage": "https://github.com/Socks3389/One-Person-Company-Agent",
+  "repository": "https://github.com/Socks3389/One-Person-Company-Agent",
   "keywords": [
     "workflow",
     "project-management",
@@ -21,5 +23,5 @@
     "copilot",
     "gemini"
   ],
-  "command": "/opc"
+  "commands": ["/opc", "/opsx"]
 }
